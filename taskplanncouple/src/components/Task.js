@@ -8,25 +8,13 @@ export const TaskForm = () => {
     const {data, setData} = useData();
     const {taskId} = useParams();
     const task = data.tasks.find((task) => task.id === taskId);
-    const [text, setText] = useState(task?.name ?? "");
-    const [stateValue, setStateValue] = useState(task?.status ?? "");
+
 
     if (!task) {
         return <div>Task not found</div>;
     }
 
-    const handleChange = (e) => {
-        setText(e.target.value);
-    };
-
-    const handleStateChange = (event) => {
-        if (event.target.value === "DONE") {
-            setCompleted(true)
-        } else {
-            setCompleted(false)
-        }
-        setStateValue(event.target.value);
-    };
+   
 
 
     
@@ -94,7 +82,6 @@ export const TaskForm = () => {
                             placeholder="description"
                             size="small"
                             multiline
-                            sx={{minWidth: 422}}
                         />
                     
                     <br/>

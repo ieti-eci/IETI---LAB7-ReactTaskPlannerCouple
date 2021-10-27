@@ -12,10 +12,10 @@ export const TaskList = () => {
         const newTasks = tasks.map((task, i) => {
             if (i === index) {
                 if (task.status !== "DONE") {
-                    document.getElementById(task.id).style.background = 'rgba(0,255,0,0.3)';
+                    document.getElementById(task.id);
                     return {...task, isCompleted: !task.isCompleted, status: "DONE"};
                 } else {
-                    document.getElementById(task.id).style.background = 'white';
+                    document.getElementById(task.id);
                     return {...task, isCompleted: !task.isCompleted, status: "TODO"};
                 }
             }
