@@ -33,5 +33,5 @@ export const Prueba = ({prueba0}) => {
 
 export const useData = () => {
 
-    return React.useContext(DataContext);
+    return React.useContext(Data);
 };

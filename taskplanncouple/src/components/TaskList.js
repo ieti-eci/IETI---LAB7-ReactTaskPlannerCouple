@@ -1,60 +1,68 @@
-import {useData} from "../pruebas";
-import {TaskItem} from "./TaskItem";
-
+import { useState } from "react";
+import { useData } from "../providers/DataProvider";
+import { TaskItem } from "./TaskItem";
 
 export const TaskList = () => {
+  const { data, setData } = useData();
+  const [textValue, setTextValue] = useState("");
 
-    const {data, setData} = useData();
+  const tasks = data.tasks;
 
-    const tasks = data.tasks;
+  const handleTaskChange = (index) => () => {
+    const newTasks = tasks.map((task, i) => {
+      if (i === index) {
+        return { ...task, isCompleted: !task.isCompleted };
+      }
 
-    const handleTaskChange = (index) => () => {
-        const newTasks = tasks.map((task, i) => {
-            if (i === index) {
-                if (task.status !== "DONE") {
-                    document.getElementById(task.id);
-                    return {...task, isCompleted: !task.isCompleted, status: "DONE"};
-                } else {
-                    document.getElementById(task.id);
-                    return {...task, isCompleted: !task.isCompleted, status: "TODO"};
-                }
-            }
+      return task;
+    });
 
-            return task;
-        });
+    setData((prev) => ({ ...prev, tasks: newTasks }));
+  };
 
-        setData((prev) => ({...prev, tasks: newTasks}));
+  const newTask = (name) => {
+    const newTask = {
+      isCompleted: false,
+      name: name,
     };
+    setData((prev) => ({ ...prev, tasks: [...tasks, newTask] }));
+  };
 
-    return (
-        <article>
-            <div className='title-header'>
-                <h1>Task Planner</h1>
-            </div>
-           
-                <text label="Task Addition"/>
-            
-            <br/>
-            <br/>
-           
-                <text label="Current"/>
-            
-            <ul>
-                {tasks.map((task, index) => {
-                    return (
-                        <TaskItem
-                            id={task.id}
-                            name={task.name}
-                            description={task.description}
-                            assignedTo={task.assignedTo}
-                            dueDate={task.dueDate}
-                            status={task.status}
-                            isChecked={task.isCompleted}
-                            taskName={task.name}
-                        />
-                    );
-                })}
-            </ul>
-        </article>
-    );
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    newTask(textValue);
+    setTextValue("");
+  };
+
+  const handleTextChange = (event) => {
+    const value = event.target.value;
+    setTextValue(value);
+  };
+
+  return (
+    <article>
+      <form onSubmit={handleSubmit}>
+        <input
+          value={textValue}
+          onChange={handleTextChange}
+          type="text"
+          placeholder="Task name"
+        />
+        <button>Create Task</button>
+      </form>
+
+      <ul>
+        {tasks.map((task, index) => {
+          return (
+            <TaskItem
+              id={task.id}
+              isChecked={task.isCompleted}
+              taskName={task.name}
+              onTaskChange={handleTaskChange(index)}
+            />
+          );
+        })}
+      </ul>
+    </article>
+  );
 };

@@ -1,40 +1,22 @@
-import {useHistory} from "react-router";
+import { useHistory } from "react-router";
 
-export const TaskItem = ({id, name, description, assignedTo, dueDate, status, isChecked, taskName, onTaskChange}) => {
-    const history = useHistory();
+export const TaskItem = ({ id, isChecked, taskName, onTaskChange }) => {
+  const history = useHistory();
 
-    
+  const styleOfTheComponent = {
+    textDecoration: isChecked ? "line-through" : "",
+  };
 
-    return (
-        <div>
-            <Body sx={{maxWidth: 800, marginLeft: 40, marginTop: 5}} id={id}>
-                
-                    <input >
-                        {name}
-                    </input>
-                    <input >
-                        {assignedTo}
-                    </input>
-                    <input >
-                        {status}
-                    </input>
-                    <input >
-                        {dueDate}
-                    </input>
-                    <input >
-                        {description}
-                    </input>
-                    <Checkbox
-                        defaultChecked
-                        checked={isChecked}
-                        onChange={onTaskChange}
-                    />
-                    <button variant="contained"   size="small">
-                        Edit
-                    </button>
-                
-            </Body>
-            <br/>
-        </div>
-    );
+  const handleClick = () => {
+    const url = `/tasks/${id}`;
+    history.push(url);
+  };
+
+  return (
+    <li>
+      <input onChange={onTaskChange} checked={isChecked} type="checkbox" />
+      <span style={styleOfTheComponent}>{taskName}</span>
+      <button onClick={handleClick}>Edit</button>
+    </li>
+  );
 };

@@ -1,18 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { Prueba } from "./pruebas";
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { DataProvider } from "./providers/DataProvider";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Prueba>
+    <DataProvider>
       <App />
-    </Prueba>
-
+    </DataProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
