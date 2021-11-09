@@ -28,6 +28,42 @@
   color: #61dafb;
 }
 
+.CheckBox{
+  transform : scale(1.5);
+  padding: auto;
+}
+
+.Text{
+  font-size: 30px;
+  font-family: "Arial";
+}
+body {
+	background-image: url("./pape.jpg");
+}
+
+.Title{
+  color:"red"
+}
+.center {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+}
+.container {
+  position: relative;
+}
+.button {
+  background-color: #008CBA;
+  font-size: 20px;
+  border: none;
+  text-decoration: none;}
+
+.inputField{
+  font-size: 20px
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

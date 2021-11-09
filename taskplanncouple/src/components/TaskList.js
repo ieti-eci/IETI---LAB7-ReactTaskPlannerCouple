@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useData } from "../providers/DataProvider";
 import { TaskItem } from "./TaskItem";
+import "../App.css"
 
 export const TaskList = () => {
   const { data, setData } = useData();
@@ -40,15 +41,16 @@ export const TaskList = () => {
   };
 
   return (
-    <article>
+    <article >
       <form onSubmit={handleSubmit}>
         <input
+          class="inputField"
           value={textValue}
           onChange={handleTextChange}
           type="text"
           placeholder="Task name"
         />
-        <button>Create Task</button>
+        <button class="button">Create Task</button>
       </form>
 
       <ul>

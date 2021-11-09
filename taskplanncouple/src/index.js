@@ -4,10 +4,16 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { DataProvider } from "./providers/DataProvider";
+import "./App.css"
 
 ReactDOM.render(
   <React.StrictMode>
     <DataProvider>
+      
+      <div class="container">
+        <h1 class="Title">Task List</h1>
+      </div>
+      
       <App />
     </DataProvider>
   </React.StrictMode>,

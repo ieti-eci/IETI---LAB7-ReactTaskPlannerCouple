@@ -14,9 +14,9 @@ export const TaskItem = ({ id, isChecked, taskName, onTaskChange }) => {
 
   return (
     <li>
-      <input onChange={onTaskChange} checked={isChecked} type="checkbox" />
-      <span style={styleOfTheComponent}>{taskName}</span>
-      <button onClick={handleClick}>Edit</button>
+      <input onChange={onTaskChange} className="CheckBox"checked={isChecked} type="checkbox" />
+      <span style={styleOfTheComponent} className='Text'>{taskName}</span>
+      <button class="button" onClick={handleClick}>Edit</button>
     </li>
   );
 };
