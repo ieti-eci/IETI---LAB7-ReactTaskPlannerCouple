@@ -1,5 +1,5 @@
 # Lab 7
-## Verbo Camacho 
+## Verbo Camacho Y Allan Weisnner
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
